@@ -1,0 +1,47 @@
+{
+  "name": "chatbot-builder-backend",
+  "version": "1.0.0",
+  "description": "Backend API for Chatbot Builder SaaS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "create-admin": "node scripts/create_default_admin.js",
+    "make-admin": "node scripts/make_user_admin.js"
+  },
+  "keywords": [
+    "chatbot",
+    "builder",
+    "saas",
+    "api"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "express-validator": "^7.0.1",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "langchain": "^0.0.208",
+    "mongoose": "^7.5.0",
+    "multer": "^1.4.5-lts.1",
+    "nedb-promises": "^6.2.3",
+    "nodemailer": "^6.9.7",
+    "openai": "^4.20.1",
+    "pdf-parse": "^1.1.1",
+    "pinecone-client": "^1.1.0",
+    "redis": "^4.6.11",
+    "socket.io": "^4.7.2",
+    "stripe": "^14.7.0",
+    "twilio": "^4.19.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

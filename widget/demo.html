@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Widget Demo - Chatbot Builder</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #2C3E50;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #7F8C8D;
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .demo-section {
+            background: #F5F7FA;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .demo-section h2 {
+            color: #2C3E50;
+            margin-top: 0;
+        }
+
+        .code-block {
+            background: #2C3E50;
+            color: #ECF0F1;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .feature-card i {
+            font-size: 32px;
+            color: #4A90E2;
+            margin-bottom: 10px;
+        }
+
+        .feature-card h3 {
+            color: #2C3E50;
+            margin: 10px 0;
+        }
+
+        .feature-card p {
+            color: #7F8C8D;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #4A90E2;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #357ABD;
+            transform: translateY(-2px);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 Chatbot Widget Demo</h1>
+        <p class="subtitle">See how easy it is to add a chatbot to your website</p>
+
+        <div class="demo-section">
+            <h2>How to Use</h2>
+            <p>Add this simple code to your website before the closing <code>&lt;/body&gt;</code> tag:</p>
+            
+            <div class="code-block">
+&lt;!-- Chatbot Widget --&gt;
+&lt;script src="chatbot.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  ChatbotWidget.init({
+    botId: 'demo-bot-123',
+    primaryColor: '#4A90E2',
+    position: 'bottom-right'
+  });
+&lt;/script&gt;
+            </div>
+
+            <p>That's it! Your chatbot is now live on your website. Click the chat icon in the bottom right corner to try it! 👉</p>
+        </div>
+
+        <h2>Features</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <i class="fas fa-palette"></i>
+                <h3>Customizable Design</h3>
+                <p>Match your brand colors and style with easy customization options.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Mobile Responsive</h3>
+                <p>Works perfectly on all devices - desktop, tablet, and mobile.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Lightning Fast</h3>
+                <p>Lightweight and optimized for fast loading times.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Analytics</h3>
+                <p>Track conversations and get insights into customer interactions.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-robot"></i>
+                <h3>AI Powered</h3>
+                <p>Smart responses and natural conversation flow.</p>
+            </div>
+
+            <div class="feature-card">
+                <i class="fas fa-plug"></i>
+                <h3>Easy Integration</h3>
+                <p>No coding skills required. Just copy and paste.</p>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Configuration Options</h2>
+            <div class="code-block">
+ChatbotWidget.init({
+  botId: 'your-bot-id',           // Required: Your chatbot ID
+  apiUrl: 'https://api.example.com', // API endpoint
+  primaryColor: '#4A90E2',        // Custom brand color
+  position: 'bottom-right',       // Widget position
+  theme: 'light'                  // light or dark theme
+});
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="../frontend/index.html" class="btn">
+                <i class="fas fa-paint-brush"></i> Create Your Chatbot
+            </a>
+        </div>
+    </div>
+
+    <!-- Include the chatbot widget -->
+    <script src="chatbot.js"></script>
+    <script>
+        // Initialize the chatbot
+        ChatbotWidget.init({
+            botId: 'demo-bot-123',
+            apiUrl: 'http://localhost:5000',
+            primaryColor: '#4A90E2',
+            position: 'bottom-right',
+            theme: 'light'
+        });
+    </script>
+</body>
+</html>

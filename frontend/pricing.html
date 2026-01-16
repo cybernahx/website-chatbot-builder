@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing & Benefits - Chatbot Builder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #4A90E2;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .benefits-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5em;
+            color: #2C3E50;
+            margin-bottom: 15px;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .benefit-card {
+            padding: 30px;
+            border-radius: 15px;
+            background: #f8f9fa;
+            transition: transform 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: #4A90E2;
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: #e3f2fd;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #4A90E2;
+            margin-bottom: 20px;
+        }
+
+        .pricing-section {
+            padding: 80px 0;
+            background: #f5f7fa;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .pricing-card.popular {
+            transform: scale(1.05);
+            border: 2px solid #4A90E2;
+            box-shadow: 0 10px 40px rgba(74, 144, 226, 0.2);
+            z-index: 1;
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4A90E2;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 3em;
+            font-weight: bold;
+            color: #2C3E50;
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 0.4em;
+            color: #7F8C8D;
+            font-weight: normal;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .features-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .features-list li i {
+            color: #27AE60;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #4A90E2;
+            color: white;
+        }
+
+        .btn-outline {
+            border: 2px solid #4A90E2;
+            color: #4A90E2;
+            background: transparent;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary:hover {
+            background: #357abd;
+        }
+
+        .btn-outline:hover {
+            background: #4A90E2;
+            color: white;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 80px 20px;
+            background: #2C3E50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo">
+                <i class="fas fa-robot"></i> Chatbot Builder
+            </a>
+            <div>
+                <a href="login.html" class="btn btn-outline" style="margin-right: 10px;">Login</a>
+                <a href="register.html" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Automate Your Sales While You Sleep</h1>
+            <p>The only AI Chatbot built for Real Estate Agents, Local Businesses, and Agencies in Pakistan. Speaks Roman Urdu, captures leads, and sends them directly to WhatsApp.</p>
+            <a href="register.html" class="btn btn-primary" style="background: white; color: #667eea; font-size: 1.1em;">Start Free Trial</a>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us?</h2>
+                <p>We understand the local market better than anyone else.</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-language"></i></div>
+                    <h3>Roman Urdu Support</h3>
+                    <p>Our AI understands "Mujhe 5 marla plot chahiye" just as well as "I need a 5 marla plot". Connect with your customers in their own language.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fab fa-whatsapp"></i></div>
+                    <h3>WhatsApp Integration</h3>
+                    <p>Don't lose customers on your website. Our bot qualifies leads and instantly redirects them to your WhatsApp for closing the deal.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-home"></i></div>
+                    <h3>Real Estate Specialized</h3>
+                    <p>Pre-trained templates that know the difference between 'Bahria Town' and 'DHA'. Asks the right questions: Budget, Location, Size.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Simple Pricing</h2>
+                <p>Start for free, upgrade as you grow.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$0<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> 50 Chats / Month</li>
+                        <li><i class="fas fa-check"></i> 1 Chatbot</li>
+                        <li><i class="fas fa-check"></i> Basic Templates</li>
+                        <li><i class="fas fa-check"></i> Email Support</li>
+                    </ul>
+                    <a href="register.html" class="btn btn-outline">Start Free</a>
+                </div>
+
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Pro Agent</h3>
+                    <div class="price">$29<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> Unlimited Chats</li>
+                        <li><i class="fas fa-check"></i> 3 Chatbots</li>
+                        <li><i class="fas fa-check"></i> <strong>Roman Urdu AI</strong></li>
+                        <li><i class="fas fa-check"></i> WhatsApp Redirect</li>
+                        <li><i class="fas fa-check"></i> Remove Branding</li>
+                    </ul>
+                    <a href="register.html" class="btn btn-primary">Get Started</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Agency</h3>
+                    <div class="price">$99<span>/mo</span></div>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check"></i> 10 Chatbots</li>
+                        <li><i class="fas fa-check"></i> <strong>White Label</strong> (Your Logo)</li>
+                        <li><i class="fas fa-check"></i> Client Management</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                        <li><i class="fas fa-check"></i> API Access</li>
+                    </ul>
+                    <a href="register.html" class="btn btn-outline">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to 10x your leads?</h2>
+            <p style="margin-bottom: 30px; opacity: 0.8;">Join 500+ Real Estate Agents and Business Owners.</p>
+            <a href="register.html" class="btn btn-primary" style="background: #27AE60;">Create My Chatbot Now</a>
+        </div>
+    </section>
+
+    <script src="js/config.js"></script>
+    <script src="js/pricing.js"></script>
+</body>
+</html>

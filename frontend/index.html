@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Builder - Create Your Website Chatbot</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <h1>Chatbot Builder</h1>
+            </div>
+            <nav class="nav">
+                <a href="#" class="nav-link active" id="nav-builder">Builder</a>
+                <a href="#" class="nav-link" id="nav-templates">Templates</a>
+                <a href="#" class="nav-link" id="nav-analytics">Analytics</a>
+                <a href="#" class="nav-link" id="nav-settings">Settings</a>
+                <a href="dashboard.html" class="nav-link" id="nav-dashboard"><i class="fas fa-arrow-left"></i> Dashboard</a>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-secondary" id="previewBtn">
+                    <i class="fas fa-eye"></i> Preview
+                </button>
+                <button class="btn btn-primary" id="publishBtn">
+                    <i class="fas fa-rocket"></i> Publish
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Sidebar - Chatbot Components -->
+        <aside class="sidebar">
+            <h3>Components</h3>
+            <div class="components">
+                <div class="component" draggable="true" data-type="text">
+                    <i class="fas fa-comment"></i>
+                    <span>Text Message</span>
+                </div>
+                <div class="component" draggable="true" data-type="button">
+                    <i class="fas fa-hand-pointer"></i>
+                    <span>Button</span>
+                </div>
+                <div class="component" draggable="true" data-type="input">
+                    <i class="fas fa-keyboard"></i>
+                    <span>User Input</span>
+                </div>
+                <div class="component" draggable="true" data-type="image">
+                    <i class="fas fa-image"></i>
+                    <span>Image</span>
+                </div>
+                <div class="component" draggable="true" data-type="video">
+                    <i class="fas fa-video"></i>
+                    <span>Video</span>
+                </div>
+                <div class="component" draggable="true" data-type="carousel">
+                    <i class="fas fa-images"></i>
+                    <span>Carousel</span>
+                </div>
+                <div class="component" draggable="true" data-type="condition">
+                    <i class="fas fa-code-branch"></i>
+                    <span>Condition</span>
+                </div>
+                <div class="component" draggable="true" data-type="api">
+                    <i class="fas fa-plug"></i>
+                    <span>API Call</span>
+                </div>
+                <div class="component" draggable="true" data-type="whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </div>
+            </div>
+
+            <div class="chatbot-settings">
+                <h3>Chatbot Settings</h3>
+                <div class="setting-group">
+                    <label>Bot Name</label>
+                    <input type="text" id="botName" placeholder="My Chatbot" value="Customer Support Bot">
+                </div>
+                <div class="setting-group">
+                    <label>Welcome Message</label>
+                    <textarea id="welcomeMessage" placeholder="Enter welcome message">Hello! How can I help you today?</textarea>
+                </div>
+                <div class="setting-group">
+                    <label>Bot Avatar</label>
+                    <input type="file" id="botAvatar" accept="image/*">
+                </div>
+                <div class="setting-group">
+                    <label>Primary Color</label>
+                    <input type="color" id="primaryColor" value="#4A90E2">
+                </div>
+            </div>
+        </aside>
+
+        <!-- Flow Builder Canvas -->
+        <div class="canvas-container">
+            <!-- Enhanced Toolbar -->
+            <div class="canvas-toolbar">
+                <div class="toolbar-group">
+                    <button class="toolbar-btn" id="undo" title="Undo (Ctrl+Z)"><i class="fas fa-undo"></i></button>
+                    <button class="toolbar-btn" id="redo" title="Redo (Ctrl+Y)"><i class="fas fa-redo"></i></button>
+                </div>
+                <div class="toolbar-separator"></div>
+                <div class="toolbar-group">
+                    <button class="toolbar-btn" id="zoomIn" title="Zoom In"><i class="fas fa-search-plus"></i></button>
+                    <button class="toolbar-btn" id="zoomOut" title="Zoom Out"><i class="fas fa-search-minus"></i></button>
+                    <button class="toolbar-btn" id="resetZoom" title="Reset Zoom"><i class="fas fa-compress"></i></button>
+                </div>
+                <div class="toolbar-separator"></div>
+                <div class="toolbar-group">
+                    <button class="toolbar-btn" id="snapToGrid" title="Toggle Snap to Grid"><i class="fas fa-th"></i></button>
+                    <button class="toolbar-btn" id="autoArrange" title="Auto Arrange Nodes"><i class="fas fa-project-diagram"></i></button>
+                </div>
+                <div class="toolbar-separator"></div>
+                <div class="toolbar-group">
+                    <button class="toolbar-btn" id="clearCanvas"><i class="fas fa-trash"></i> Clear</button>
+                    <button class="toolbar-btn primary" id="saveFlow"><i class="fas fa-save"></i> Save</button>
+                    <button class="toolbar-btn success" id="publishBtn"><i class="fas fa-rocket"></i> Publish</button>
+                </div>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="canvas-search">
+                <i class="fas fa-search"></i>
+                <input type="text" id="nodeSearch" placeholder="Search nodes...">
+                <button class="clear-search" id="clearSearch" style="display:none;"><i class="fas fa-times"></i></button>
+            </div>
+
+            <!-- Minimap -->
+            <div class="minimap" id="minimap">
+                <div class="minimap-viewport"></div>
+            </div>
+
+            <!-- Canvas with SVG for connections -->
+            <svg class="connections-layer" id="connectionsLayer">
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#4A90E2" />
+                    </marker>
+                </defs>
+            </svg>
+            <div class="canvas" id="flowCanvas">
+                <div class="start-node node" data-id="start" style="left: 100px; top: 100px;">
+                    <div class="node-header">
+                        <i class="fas fa-play-circle"></i>
+                        <span>Start</span>
+                    </div>
+                    <div class="node-connector output" data-node="start"></div>
+                </div>
+            </div>
+
+            <!-- Connection Info -->
+            <div class="canvas-info">
+                <span id="nodeCount">1 node</span>
+                <span class="separator">•</span>
+                <span id="zoomLevel">100%</span>
+            </div>
+        </div>
+
+        <!-- Properties Panel -->
+        <aside class="properties-panel">
+            <h3>Properties</h3>
+            <div id="propertiesContent">
+                <p class="no-selection">Select a node to edit properties</p>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Context Menu -->
+    <div class="context-menu" id="contextMenu">
+        <div class="context-menu-item" data-action="copy">
+            <i class="fas fa-copy"></i>
+            <span>Copy</span>
+            <span style="margin-left: auto; font-size: 11px; opacity: 0.6;">Ctrl+C</span>
+        </div>
+        <div class="context-menu-item" data-action="paste">
+            <i class="fas fa-paste"></i>
+            <span>Paste</span>
+            <span style="margin-left: auto; font-size: 11px; opacity: 0.6;">Ctrl+V</span>
+        </div>
+        <div class="context-menu-item" data-action="duplicate">
+            <i class="fas fa-clone"></i>
+            <span>Duplicate</span>
+            <span style="margin-left: auto; font-size: 11px; opacity: 0.6;">Ctrl+D</span>
+        </div>
+        <div class="context-menu-separator"></div>
+        <div class="context-menu-item" data-action="edit">
+            <i class="fas fa-edit"></i>
+            <span>Edit Properties</span>
+        </div>
+        <div class="context-menu-separator"></div>
+        <div class="context-menu-item danger" data-action="delete">
+            <i class="fas fa-trash"></i>
+            <span>Delete</span>
+            <span style="margin-left: auto; font-size: 11px; opacity: 0.6;">Del</span>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Chatbot Preview</h2>
+                <button class="close-modal" id="closePreview">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="chatbot-preview">
+                    <div class="chat-container">
+                        <div class="chat-header">
+                            <div class="bot-avatar-preview">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="bot-info">
+                                <h4 id="previewBotName">Customer Support Bot</h4>
+                                <span class="bot-status">Online</span>
+                            </div>
+                        </div>
+                        <div class="chat-messages" id="previewMessages">
+                            <div class="message bot-message">
+                                <p>Hello! How can I help you today?</p>
+                            </div>
+                        </div>
+                        <div class="chat-input-container">
+                            <input type="text" placeholder="Type a message..." class="chat-input">
+                            <button class="send-btn"><i class="fas fa-paper-plane"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Templates Modal -->
+    <div class="modal" id="templatesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Choose a Template</h2>
+                <button class="close-modal" id="closeTemplates">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="templates-grid">
+                    <div class="template-card" data-template="customer-support">
+                        <div class="template-icon"><i class="fas fa-headset"></i></div>
+                        <h3>Customer Support</h3>
+                        <p>Basic support flow with FAQ and human handoff.</p>
+                        <button class="btn btn-sm btn-primary">Use Template</button>
+                    </div>
+                    <div class="template-card" data-template="real-estate">
+                        <div class="template-icon"><i class="fas fa-home"></i></div>
+                        <h3>Real Estate</h3>
+                        <p>Lead qualification for property buyers and sellers.</p>
+                        <button class="btn btn-sm btn-primary">Use Template</button>
+                    </div>
+                    <div class="template-card" data-template="lead-gen">
+                        <div class="template-icon"><i class="fas fa-filter"></i></div>
+                        <h3>Lead Generation</h3>
+                        <p>Capture contact info and qualify leads.</p>
+                        <button class="btn btn-sm btn-primary">Use Template</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Chatbot Settings</h2>
+                <button class="close-modal" id="closeSettings">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="settings-tabs">
+                    <button class="tab-btn active" data-tab="general">General</button>
+                    <button class="tab-btn" data-tab="ai">AI & Knowledge</button>
+                    <button class="tab-btn" data-tab="integrations">Integrations</button>
+                    <button class="tab-btn" data-tab="ads">Ads</button>
+                </div>
+                
+                <div class="tab-content active" id="tab-general">
+                    <div class="form-group">
+                        <label>Bot Name</label>
+                        <input type="text" id="settingsBotName" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Welcome Message</label>
+                        <textarea id="settingsWelcomeMessage" class="form-input" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Primary Color</label>
+                        <input type="color" id="settingsPrimaryColor">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab-ai">
+                    <div class="form-group">
+                        <label>Language / Tone</label>
+                        <select id="settingsLanguage" class="form-input">
+                            <option value="english">English (Professional)</option>
+                            <option value="roman_urdu">Roman Urdu (Casual)</option>
+                            <option value="urdu">Urdu (Formal)</option>
+                            <option value="hindi">Hindi</option>
+                            <option value="mixed">Mixed (English + Local)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>System Prompt</label>
+                        <textarea id="settingsSystemPrompt" class="form-input" rows="5" placeholder="Instructions for the AI..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Knowledge Base</label>
+                        <div class="file-upload-area" id="knowledgeUpload">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Drag & drop PDF/Doc files here or click to upload</p>
+                            <input type="file" id="knowledgeFile" hidden accept=".pdf,.doc,.docx,.txt">
+                        </div>
+                        <div id="fileList" class="file-list"></div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab-integrations">
+                    <div class="form-group">
+                        <label>Webhook URL</label>
+                        <input type="url" id="webhookUrl" class="form-input" placeholder="https://your-api.com/webhook">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Notifications</label>
+                        <input type="email" id="notificationEmail" class="form-input" placeholder="Enter email for lead alerts">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="tab-ads">
+                    <div class="form-group">
+                        <label>Enable Ads</label>
+                        <div style="margin-top: 5px;">
+                            <input type="checkbox" id="settingsShowAds"> Show ads in chatbot widget
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Ad Content (Text)</label>
+                        <input type="text" id="settingsAdContent" class="form-input" placeholder="e.g. Powered by Chatbot Builder">
+                    </div>
+                    <div class="form-group">
+                        <label>Ad Link (URL)</label>
+                        <input type="url" id="settingsAdLink" class="form-input" placeholder="https://your-domain.com">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary" id="saveSettingsBtn">Save Settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Publish Modal -->
+    <div class="modal" id="publishModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Publish Chatbot</h2>
+                <button class="close-modal" id="closePublish">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Embed Code</label>
+                    <p class="text-sm text-muted">Copy and paste this code into your website's HTML before the closing &lt;/body&gt; tag.</p>
+                    <div class="input-group">
+                        <textarea id="embedCode" class="form-input" rows="4" readonly></textarea>
+                        <button class="btn btn-secondary copy-btn" id="copyEmbed"><i class="fas fa-copy"></i> Copy</button>
+                    </div>
+                </div>
+                
+                <div class="form-group" style="margin-top: 20px;">
+                    <label>Direct Link</label>
+                    <p class="text-sm text-muted">Share this link directly with your users.</p>
+                    <div class="input-group">
+                        <input type="text" id="directLink" class="form-input" readonly>
+                        <button class="btn btn-secondary copy-btn" id="copyLink"><i class="fas fa-copy"></i> Copy</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="document.getElementById('publishModal').classList.remove('active')">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Add styles for new modals */
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .template-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .template-card:hover {
+            border-color: #4A90E2;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .template-icon {
+            font-size: 2em;
+            color: #4A90E2;
+            margin-bottom: 15px;
+        }
+        .settings-tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 20px;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .tab-btn.active {
+            border-color: #4A90E2;
+            color: #4A90E2;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .file-upload-area {
+            border: 2px dashed #ddd;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .file-upload-area:hover {
+            border-color: #4A90E2;
+            background: #f8f9fa;
+        }
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        .modal-footer {
+            margin-top: 20px;
+            text-align: right;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+    </style>
+
+    <script src="js/config.js"></script>
+    <script src="js/flowBuilderEnhanced.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

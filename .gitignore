@@ -1,0 +1,17 @@
+node_modules/
+.env
+.env.local
+*.log
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.dart_tool/
+build/
+.idea/
+.vscode/
+*.iml
+bin/
+obj/
+.gradle/
+local.properties
