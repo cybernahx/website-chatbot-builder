@@ -34,7 +34,6 @@ Your backend server requires MongoDB to run. You have two options:
 
 5. **Update .env File**
    ```env
-   MONGODB_URI=mongodb+srv://username:yourpassword@cluster0.xxxxx.mongodb.net/chatbot-builder?retryWrites=true&w=majority
    ```
    - Replace `<password>` with your database user password
    - Add `/chatbot-builder` before the `?` to specify database name
