@@ -63,7 +63,7 @@ mongodb://localhost:27017/chatbot-builder
 **Option B: Cloud (MongoDB Atlas) - Recommended**
 1. Create free account at https://www.mongodb.com/cloud/atlas
 2. Create cluster (free tier)
-3. Get connection string: `mongodb+srv://username:password@cluster.mongodb.net/dbname`
+3. Get connection string: ``
 4. Copy to `MONGODB_URI`
 
 #### 🔐 JWT Secret
