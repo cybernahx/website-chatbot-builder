@@ -379,7 +379,7 @@ npm install
 ```
 - Check MONGODB_URI in .env
 - Or use MongoDB Atlas cloud database
-- Connection string format: mongodb+srv://user:pass@cluster.mongodb.net/dbname
+- Connection string format: 
 ```
 
 ### "OpenAI API key invalid"
