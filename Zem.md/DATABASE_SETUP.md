@@ -46,8 +46,7 @@
 
 6. **Update .env File**
    ```env
-   MONGODB_URI=mongodb+srv://admin:YourSecurePassword123@cluster0.xxxxx.mongodb.net/chatbot-builder?retryWrites=true&w=majority
-   ```
+
 
 ✅ **Done! No installation needed.**
 
