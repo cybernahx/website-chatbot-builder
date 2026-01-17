@@ -280,7 +280,6 @@ docker-compose up -d
 
 Example:
 ```
-mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/chatbot-builder?retryWrites=true&w=majority
 ```
 
 ---
